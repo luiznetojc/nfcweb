@@ -1,0 +1,118 @@
+<div class="container-fluid">
+  <div class="card list-produto">
+    <h5 class="card-header">
+      <table>
+        <tr>
+          <td>
+            <input type="text" class="form-control" style="width: 500px;" placeholder="Buscar..." [(ngModel)]="search"
+              aria-label="Buscar..." (change)="searchProduto()">
+          </td>
+          <td>
+            <button (click)="searchProduto()"class="btn btn btn-outline-primary ml-2">Buscar</button>
+          </td>
+        </tr>
+      </table>
+    </h5>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 100px;">Id</th>
+            <th scope="col" style="width: 100px;">NCM</th>
+            <th scope="col" style="width: 700px;">Descrição</th>
+            <th scope="col" style="width: 100px;">UN</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produtos of allProdutos | async | paginate : { itemsPerPage: 5, currentPage: paginaAtual };let i = index;">
+            <td>{{produtos.idproduto}}</td>
+            <td>{{produtos.ncm_produto}}</td>
+            <td>{{produtos.descricao_produto}}</td>
+            <td>{{produtos.unidade_medida}}</td>
+            <td>{{produtos.preco_venda|currency:'BRL'}}</td>
+            <td>
+              <button class="btn btn-primary " (click)="selectProduto(produtos,qtd)" type="button">Adicionar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo">
+      </pagination-controls>
+    </div>
+  </div>
+  <div class="card list-produto">
+    <div class="card-body">
+     
+      <table class="table">
+        <thead>
+          <tr>
+
+            <th scope="col" style="width: 700px;">Descrição</th>
+         
+            <th scope="col">Qtd</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Total</th>
+            <th scope="col">Ações</th>
+            <th scope="col" style="width: 200px;">
+              <div *ngIf="valid != false">
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Produtos of  request.pedido_item; let i = index;">
+
+            <td style="width: 200px;">{{Produtos.descricao_produto}}</td>
+            <td> <input #qtdInput type="number" class="form-control input-sm" style="width: 100px;" placeholder="Quantidade"
+              (change)="changeQtd(Produtos,$event.target)"name="{{i}}" min="{{i}}" id="{{i}}" value="1"></td>
+
+          <td> <input #qtdInput type="number" class="form-control input-sm" style="width: 100px;" placeholder="Preço"
+            (change)="changePreco(Produtos,$event.target)"name="{{i}}" min="{{i}}" id="{{i}}" value={{Produtos.preco_item}}></td>
+
+            <td> 
+              {{Produtos.preco_item*Produtos.quantidade_item }}
+            </td>
+
+            <td>
+              <button type="button" class="btn btn-danger btn-sm ml-1"
+                (click)="deleteProduto(Produtos)">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+        <table>
+          <tr>
+            <div *ngIf="valid != false">
+              <td><button style="margin-right: 10px ;" type="button" class="btn btn-success"
+                  (click)="sendPedidos()">Enviar</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="clearProdutos()">Limpar</button></td>
+            </div>
+            <td>
+              <div style="width: 190px;" class="input-group mb-3">
+                <mat-form-field appearance="fill">  
+                  <mat-label>Tipo de Pagamento</mat-label>
+                  <mat-select [(value)]="tipo">
+                    <mat-option value="1">Dinheiro</mat-option>
+                    <mat-option value="2">Cartão</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </td>
+            <td><input type="text" class="form-control mr-sm-2" style="width: 200px;margin-bottom: 10px;"
+                placeholder="CPF" [(ngModel)]="CPF" aria-label="CPF" mask="000.000.000-99"></td>
+            <!-- <td>
+              <div style="width: 150px;" class="input-group input-group-sm mb-3">
+                <div class="custom-file">
+                  <input type="file" (change)="inputFile($event)" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01-sm">
+                  <label class="custom-file-label" for="inputGroupFile01">Arquivo json</label>
+                </div>
+              </div>
+            </td> -->
+          </tr>
+        </table>
+      </table>
+    </div>
+     <div class="card-body" style="font-size: 20px"><b>Preço Total: {{request.valor_pedido|currency:'BRL'}}</b></div>
+  </div>
+</div>
