@@ -1,16 +1,20 @@
 <div class="mat-elevation-z8">
-    <div class="adicionar">
-      <h4>Adicionar Produto</h4>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Descrição" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-        <input type="text" class="form-control" placeholder="Valor" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-        <input type="text" class="form-control" placeholder="Quantidade" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-        <input type="text" class="form-control" placeholder="Fornecedor" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-        <button class="btn btn-success">Adicionar</button>
-      </div>
-      
+  <div class="adicionar">
+    <h4>Adicionar Produto</h4>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Descrição" aria-label="Default"
+        aria-describedby="inputGroup-sizing-default">
+      <input type="text" class="form-control" placeholder="Valor" aria-label="Default"
+        aria-describedby="inputGroup-sizing-default">
+      <input type="text" class="form-control" placeholder="Quantidade" aria-label="Default"
+        aria-describedby="inputGroup-sizing-default">
+      <input type="text" class="form-control" placeholder="Fornecedor" aria-label="Default"
+        aria-describedby="inputGroup-sizing-default">
+      <button class="btn btn-success">Adicionar</button>
     </div>
-<div class="card-body">
+
+  </div>
+  <div class="card-body">
     <table class="table">
       <thead>
         <tr>
@@ -23,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of AllProducts | async ;let i = index;">
+        <!--  <tr *ngFor="let product of AllProducts | async ;let i = index;">
           <td>{{product.Id}}</td>
           <td>{{product.Nome}}</td>
           <td>{{product.Fornecedor}}</td>
@@ -53,10 +57,10 @@
               </div>
           </td>
         
-        </tr>
+        </tr> -->
       </tbody>
     </table>
     <!-- <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo">
     </pagination-controls> -->
   </div>
-  </div>
+</div>

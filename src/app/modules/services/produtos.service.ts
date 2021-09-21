@@ -15,27 +15,26 @@ export class ProdutosService {
   }
 
   searchProduto(searchTerm: string) {
-    return this.http.get<Produtos>(this.URL_API +'/'+'produto'+'/'+ 'PesquisaPorNome/' +window.localStorage.getItem("idempresa")+'/'+ searchTerm).pipe(retry(2), catchError(this.handleError))
+    return this.http.get<Produtos>(this.URL_API + '/' + 'produto' + '/' + 'PesquisaPorNome' /* window.localStorage.getItem("idempresa") */ + '/' + searchTerm).pipe(retry(2), catchError(this.handleError))
   }
   //pegaro todos os produtos
   getAllProdutos(): Observable<Produtos> {
-    return this.http.get<Produtos>(this.URL_API+'/'+'produto').pipe(retry(2), catchError(this.handleError))
+    return this.http.get<Produtos>(this.URL_API + '/' + 'produto').pipe(retry(2), catchError(this.handleError))
   }
   getProdutoById(id: number): Observable<Produtos> {
-    return this.http.get<Produtos>(this.URL_API +'/'+'produto' + '/' + id).pipe(retry(2), catchError(this.handleError))
+    return this.http.get<Produtos>(this.URL_API + '/' + 'produto' + '/' + id).pipe(retry(2), catchError(this.handleError))
   }
-  getProdutosById(id: number):Observable<Produtos>
-  {
+  getProdutosById(id: number): Observable<Produtos> {
 
-    return this.http.get<Produtos>(this.URL_API+'/'+'ConsultaPedido/PesquisaItemPedido/' + id).pipe(retry(2),catchError(this.handleError))
+    return this.http.get<Produtos>(this.URL_API + '/' + 'ConsultaPedido/PesquisaItemPedido/' + id).pipe(retry(2), catchError(this.handleError))
   }
   //salvar um produto
   saveProduto(produto: Produtos): Observable<Produtos> {
-    return this.http.post<Produtos>(this.URL_API+'/'+'produto', JSON.stringify(produto), this.httpOptions)
+    return this.http.post<Produtos>(this.URL_API + '/' + 'produto', JSON.stringify(produto), this.httpOptions)
   }
   // utualiza um produto
   updateProduto(produto: Produtos): Observable<Produtos> {
-    return this.http.put<Produtos>(this.URL_API +'/'+'produto'+ '/' + produto.idproduto, JSON.stringify(produto), this.httpOptions)
+    return this.http.put<Produtos>(this.URL_API + '/' + 'produto' + '/' + produto.idproduto, JSON.stringify(produto), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
