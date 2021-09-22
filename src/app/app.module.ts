@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PedidosComponent } from './modules/pedidos/pedidos.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {  ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSelectModule,
     MatIconModule,
     NgbModule,
+    ReactiveFormsModule
+    
   ],
 
   providers: [],

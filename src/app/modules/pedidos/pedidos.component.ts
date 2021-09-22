@@ -5,6 +5,7 @@ import { PedidosService } from '../services/pedidos.service';
 import { formatDate } from '@angular/common';
 import { saveAs } from 'file-saver';
 import { ProdutosService } from '../services/produtos.service';
+import {FormGroup, FormControl} from '@angular/forms';
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
@@ -17,6 +18,10 @@ export class PedidosComponent implements OnInit {
   allProdutos!: Observable<any>;
   pedidosRangeData!: Observable<any>;
   id = 1;
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   ngOnInit(): void {
 
     this.searchPedido();
