@@ -17,6 +17,8 @@ import { PedidosComponent } from './modules/pedidos/pedidos.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {  ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +40,9 @@ import {  ReactiveFormsModule} from '@angular/forms';
     MatSelectModule,
     MatIconModule,
     NgbModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    MatInputModule,
+    NgxMaskModule.forRoot()
   ],
 
   providers: [],

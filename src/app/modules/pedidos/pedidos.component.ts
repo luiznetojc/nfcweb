@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResponsePedido } from '../modelos/response-pedido';
 import { PedidosService } from '../services/pedidos.service';
 import { formatDate } from '@angular/common';
 import { saveAs } from 'file-saver';
 import { ProdutosService } from '../services/produtos.service';
 import {FormGroup, FormControl} from '@angular/forms';
+
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',

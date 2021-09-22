@@ -4,11 +4,16 @@
             <table>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" style="width: 500px;" placeholder="Buscar..."
-                            [(ngModel)]="search" aria-label="Buscar..." (change)="searchProduto()">
+                        <form class="busca">
+                       
+                            <mat-form-field style="width: 400px;">
+                                <mat-label>Buscar</mat-label>
+                                <input matInput [(ngModel)]="search" [ngModelOptions]="{standalone: true}" style="width: 400px;" (change)="searchProduto()" placeholder="Search..." >
+                              </mat-form-field>
+                            </form>
                     </td>
                     <td>
-                        <button (click)="searchProduto()" class="btn btn btn-outline-primary ml-2">Buscar</button>
+                        <button (click)="searchProduto()" style="border-radius: 100%;" class="btn btn btn-outline-primary ml-2"><mat-icon inline="true">search</mat-icon></button>
                     </td>
                 </tr>
             </table>
@@ -99,8 +104,8 @@
                             </td>
                         </div>
                         <td>
-                            <div style="width: 190px;" class="input-group mb-3">
-                                <mat-form-field appearance="fill">
+                            <div style="width: 110px;" class="input-group mb-3">
+                                <mat-form-field inline="true" style="width: 100px;">
                                     <mat-label>Tipo de Pagamento</mat-label>
                                     <mat-select [(value)]="tipo">
                                         <mat-option value="1">Dinheiro</mat-option>
@@ -109,8 +114,14 @@
                                 </mat-form-field>
                             </div>
                         </td>
-                        <td><input type="text" class="form-control mr-sm-2" style="width: 200px;margin-bottom: 10px;"
-                                placeholder="CPF" [(ngModel)]="CPF" aria-label="CPF" mask="000.000.000-99"></td>
+                        <td>
+                            <form>
+                                <mat-form-field style="width: 120px;">
+                                    <mat-label>CPF</mat-label>
+                                    <input matInput [(ngModel)]="CPF" [ngModelOptions]="{standalone: true}" style="width: 120px;"mask="000.000.000-99"  placeholder="000.000.000-99" >
+                                  </mat-form-field>
+                            </form>
+                            </td>
                         <!-- <td>
                 <div style="width: 150px;" class="input-group input-group-sm mb-3">
                   <div class="custom-file">
@@ -118,11 +129,12 @@
                     <label class="custom-file-label" for="inputGroupFile01">Arquivo json</label>
                   </div>
                 </div>
-              </td> -->
+            </td> -->
+                    <td><div class="card-body" style="font-size: 20px"><b>Preço Total: {{request.valor_pedido|currency:'BRL'}}</b></div>
+                    </td>
                     </tr>
                 </table>
             </table>
         </div>
-        <div class="card-body" style="font-size: 20px"><b>Preço Total: {{request.valor_pedido|currency:'BRL'}}</b></div>
     </div>
 </div>
