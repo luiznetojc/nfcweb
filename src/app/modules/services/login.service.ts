@@ -13,7 +13,9 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
   Url = 'http://nota100.com.br/api/v1/usuario/login';
 
-
+    getEmail():string{
+      return window.localStorage.getItem('cpfUsuario');
+    }
   async doLogin(requestLogin: RequestLogin) {
     const result = await this.httpClient.post<any>(this.Url, requestLogin).toPromise();
     if (result && result.tokenUsuarioLogado) {

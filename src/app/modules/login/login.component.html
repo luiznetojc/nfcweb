@@ -1,0 +1,26 @@
+<div class="p-3 mb-2 bg-primary bg-gradient" style="width: 100%; min-height: 100%;">
+    <div class="col d-flex justify-content-center">
+      <div class="card border-primary mb-3" style="max-width: 20rem;" id="telalogin">
+        <div class="card-body">
+    
+          <div class="alert alert-danger" *ngIf="notFounded == false">
+            Usuário ou senha não encontrado!
+          </div>
+          <form>
+            <mat-form-field style="width: 280px;">
+                <mat-label for="email">Email</mat-label>
+                 <input matInput type="text" [(ngModel)]="requestLogin.email" class="form-control"
+                id="email" required>
+            </mat-form-field>
+            <mat-form-field style="width: 280px;">
+                <mat-label for="senha">Senha</mat-label>
+                <input matInput [(ngModel)]="requestLogin.senha" type="password" class="form-control" id="password"
+                [ngModelOptions]="{standalone: true}" required>
+                
+            </mat-form-field>
+            <button type="button" class="btn btn-outline-primary" style="width:280px;"(click)="doLogin()">Entrar</button>
+        </form>
+        </div>
+      </div>
+    </div>
+    </div>
