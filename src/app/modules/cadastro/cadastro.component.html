@@ -1,0 +1,42 @@
+<div class="container" class="w-25 p-3" style="margin: 0 auto;">
+
+    <div class="card" id="telalogin">
+      <div class="card-body">
+        <div class="alert alert-danger" *ngIf="not == false">
+          Algo deu errado no cadastro!
+        </div>
+        <div class="alert alert-success" *ngIf="not == false">
+          Cadastro realizado!
+        </div>
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input [(ngModel)]="requestCadastro.email" type="email" class="form-control" id="email"
+              [ngModelOptions]="{standalone: true}">
+  
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input [(ngModel)]="requestCadastro.senha" type="password" class="form-control" id="password"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input [(ngModel)]="requestCadastro.telefone" type="telefone" class="form-control" id="telefone"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input [(ngModel)]="requestCadastro.cpf" type="cpf" class="form-control" id="cpf"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input [(ngModel)]="requestCadastro.nome" type="nome" class="form-control" id="nome"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="send()">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>

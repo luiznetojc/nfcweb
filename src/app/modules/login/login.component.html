@@ -10,7 +10,7 @@
             <mat-form-field style="width: 280px;">
                 <mat-label for="email">Email</mat-label>
                  <input matInput type="text" [(ngModel)]="requestLogin.email" class="form-control"
-                id="email" required>
+                id="email" [ngModelOptions]="{standalone: true}" required>
             </mat-form-field>
             <mat-form-field style="width: 280px;">
                 <mat-label for="senha">Senha</mat-label>

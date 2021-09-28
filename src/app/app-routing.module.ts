@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './layouts/default/default.component';
+import { CadastroComponent } from './modules/cadastro/cadastro.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/login/login.component';
 import { PedidoComponent } from './modules/pedido/pedido.component';
@@ -33,6 +34,7 @@ const routes: Routes = [{
   canActivate: [AuthGuard]
   },
   { path: 'login', component:LoginComponent},
+  { path: 'cadastro', component:CadastroComponent},
 ];
 
 @NgModule({

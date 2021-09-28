@@ -19,7 +19,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {  ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { LoginComponent } from './modules/login/login.component'
+import { LoginComponent } from './modules/login/login.component';
+import { CadastroComponent } from './modules/cadastro/cadastro.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { LoginComponent } from './modules/login/login.component'
     PedidoComponent,
     PedidosComponent,
     LoginComponent,
+    CadastroComponent,
 
   ],
   imports: [
