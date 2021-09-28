@@ -5,7 +5,7 @@ import { formatDate } from '@angular/common';
 import { saveAs } from 'file-saver';
 import { ProdutosService } from '../services/produtos.service';
 import {FormGroup, FormControl} from '@angular/forms';
-
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
@@ -13,7 +13,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 })
 export class PedidosComponent implements OnInit {
 
-  constructor(private pedidosSvc: PedidosService, private ProdutosSvc: ProdutosService) { }
+  constructor(private pedidosSvc: PedidosService, private ProdutosSvc: ProdutosService,private dateAdapter: DateAdapter<Date>) { }
   allPedidos!: Observable<any>;
   allProdutos!: Observable<any>;
   pedidosRangeData!: Observable<any>;
@@ -22,8 +22,9 @@ export class PedidosComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  
   ngOnInit(): void {
-
+    this.dateAdapter.setLocale('en-GB');
     this.searchPedido();
 
   }
@@ -33,10 +34,12 @@ export class PedidosComponent implements OnInit {
   cancelarNota(id: string) {
     this.pedidosSvc.cancelarNota(id);
   }
-  begin_data = "";
-  end_data = "";
+  begin_data = new Date();
+  end_data = new Date();
   getAllXML() {
-    this.pedidosRangeData = this.pedidosSvc.getPedidosbyRangeData(this.begin_data, this.end_data);
+    this.pedidosRangeData = this.pedidosSvc.getPedidosbyRangeData(
+                  formatDate(this.begin_data, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530').substring(0, 10), 
+                  formatDate(this.end_data, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530').substring(0, 10))
     this.pedidosRangeData.subscribe(pedidos => {
       for (let pedido of pedidos) {
         var res = this.pedidosSvc.getXmlReport(pedido["xml"])
@@ -61,10 +64,9 @@ export class PedidosComponent implements OnInit {
       window.open(fileURL, '_blank');
     })
   }
-  data = new Date();
   dataString = "";
   formatDate(data: string) {
-    data = formatDate(this.data, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
+    data = formatDate(this.begin_data, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
     return data;
   }
   formatDatePedidos() {
