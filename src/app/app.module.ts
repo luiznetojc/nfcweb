@@ -18,13 +18,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {  ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { LoginComponent } from './modules/login/login.component'
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     PedidoComponent,
     PedidosComponent,
+    LoginComponent,
 
   ],
   imports: [
